@@ -23,6 +23,7 @@ namespace TemplateGenerator
         public MainWindow()
         {
             InitializeComponent();
+            // Testing
         }
     }
 }
