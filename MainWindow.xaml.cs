@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace TemplateGenerator
 {
@@ -24,6 +12,34 @@ namespace TemplateGenerator
         {
             InitializeComponent();
             // Testing
+        }
+
+        private void GenerateButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            GenerateButton.IsEnabled = false;
+
+            if (!ItemsBox.Text.Contains(','))
+            {
+                MessageBox.Show("Please make sure there is a , in the items list!");
+            }
+            else if (!TemplateBox.Text.Contains("§§§"))
+            {
+                MessageBox.Show("Please make sure there is §§§ in the template!");
+            }
+            else
+            {
+                // §§§
+                StringBuilder newText = new();
+                foreach (string s in ItemsBox.Text.Split(','))
+                {
+                    newText.AppendLine(TemplateBox.Text.Replace("§§§", s));
+                    newText.AppendLine();
+                }
+
+                MessageBox.Show(newText.ToString());
+            }
+
+            GenerateButton.IsEnabled = true;
         }
     }
 }
