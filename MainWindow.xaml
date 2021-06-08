@@ -19,14 +19,16 @@
             AcceptsReturn="True"
             VerticalScrollBarVisibility="Visible"
         />
-        <Label
+        <TextBlock
             x:Name="HowToUseInfo"
-            Content="How to use"
+            Text="How to use"
             HorizontalAlignment="Left"
             Height="352"
             Margin="565,0,0,0"
             VerticalAlignment="Center"
-            Width="225"
+            Width="220"
+            IsEnabled="false"
+            TextWrapping="WrapWithOverflow"
         />
         <TextBox
             x:Name="ItemsBox"
@@ -57,6 +59,7 @@
             Height="17"
             Padding="0,0,0,0"
             Width="148"
+            MaxWidth="148"
         />
 
     </Grid>
