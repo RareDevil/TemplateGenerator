@@ -35,9 +35,9 @@ namespace TemplateGenerator
                 ItemsBox.IsReadOnly = true;
                 // §§§
                 StringBuilder newText = new();
-                foreach (string s in ItemsBox.Text.Split(','))
+                foreach (string s in ItemsBox.Text.Trim().Trim(',').Split(','))
                 {
-                    newText.AppendLine(TemplateBox.Text.Replace("§§§", s));
+                    newText.AppendLine(TemplateBox.Text.Replace("§§§", s.Trim()));
                     newText.AppendLine();
                 }
 
