@@ -16,8 +16,6 @@ namespace TemplateGenerator
 
         private void GenerateButton_OnClick(object sender, RoutedEventArgs e)
         {
-            GenerateButton.IsEnabled = false;
-
             if (!ItemsBox.Text.Contains(','))
             {
                 MessageBox.Show("Please make sure there is a , in the items list.");
@@ -32,6 +30,9 @@ namespace TemplateGenerator
             }
             else
             {
+                GenerateButton.IsEnabled = false;
+                TemplateBox.IsReadOnly = true;
+                ItemsBox.IsReadOnly = true;
                 // §§§
                 StringBuilder newText = new();
                 foreach (string s in ItemsBox.Text.Split(','))
@@ -40,10 +41,17 @@ namespace TemplateGenerator
                     newText.AppendLine();
                 }
 
-                MessageBox.Show(newText.ToString());
-            }
+                ResultDialog dialog = new ResultDialog(newText.ToString());
 
-            GenerateButton.IsEnabled = true;
+                dialog.Show();
+
+                dialog.Closed += (o, args) =>
+                {
+                    GenerateButton.IsEnabled = true;
+                    TemplateBox.IsReadOnly = false;
+                    ItemsBox.IsReadOnly = false;
+                };
+            }
         }
     }
 }
