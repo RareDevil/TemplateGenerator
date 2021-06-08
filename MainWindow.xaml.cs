@@ -20,11 +20,15 @@ namespace TemplateGenerator
 
             if (!ItemsBox.Text.Contains(','))
             {
-                MessageBox.Show("Please make sure there is a , in the items list!");
+                MessageBox.Show("Please make sure there is a , in the items list.");
+            }
+            else if (!ItemsBox.Text.Trim().Trim(',').Contains(','))
+            {
+                MessageBox.Show("Dont just add , and hope that something magic will happen.");
             }
             else if (!TemplateBox.Text.Contains("§§§"))
             {
-                MessageBox.Show("Please make sure there is §§§ in the template!");
+                MessageBox.Show("Please make sure there is §§§ in the template.");
             }
             else
             {
